@@ -1,0 +1,10 @@
+
+#!/bin/bash
+
+for (( i=4439; i>0; i-- ))
+do
+fcrackzip -b -D -u -p /usr/share/wordlists/rockyou.txt $i.zip > pass1.txt
+sed 's/.*== //' pass1.txt | tr -d "\n" > pass.txt
+unzip -P "$(cat pass.txt)"  $i.zip
+rm $i.zip
+done
