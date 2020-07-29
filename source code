@@ -1,0 +1,23 @@
+# ý tưởng của đoạn code này là lưu file lấy được sau khi đã unzip
+# vào một thư mục riêng, và tiếp tục unzip file này.
+# Bởi vì các file trùng tên nên buộc phải làm thế này
+# File unzip.py và flag.zip ở trong cùng một thư mục
+import zipfile, os, sys
+count = 0
+path = os.getcwd() # get current directory content file flag.zip
+folder = ''
+while 1:
+    pathnew = path +'\\'+ folder
+    for file in os.listdir(pathnew):
+        if file != 'unzip.py': # unzip.py is name of file python
+            try:
+                print 'extracting file: ', file
+                zip = zipfile.ZipFile(pathnew+'\\'+file,'r')
+                folder = 'unzip '+str(count)
+                zip.extractall(folder)
+                zip.close()
+                count += 1
+            except:
+                print 'done =&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;gt;'
+                print 'flag in folder',folder
+                sys.exit()
